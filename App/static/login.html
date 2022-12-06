@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{{super()}}
+
+
+
+{% block content%}
+
+{% for message in get_flashed_messages() %}
+
+<div class="alert alert-warning alert-dismissible show" role="alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+
+    {%endfor%}
+
+<div id="card">
+    <div id="card-content">
+      <div id="card-title">
+        <h2>LOGIN</h2>
+        <div class="underline-title"></div>
+      </div>
+      <div class="shadow p-3 mb-5 bg-white rounded">
+      <form method='POST' class="form">
+        {{form.hidden_tag()}}
+        <br/>
+        {{form.email.label}}
+        {{form.email(class="form-control")}}
+        <br/>
+        <div class="form-border"></div>
+        <br/>
+        {{form.password.label}}
+        {{form.password(class="form-control")}}
+        <br/>
+        <div class="form-border"></div>
+        <br/>
+        <div class="container bg-light">
+            <div class="col-md-12 text-center">
+         {{form.submit(class="btn btn-primary")}}
+            </div>
+            <a href="/signup" style="text-align:center;display:block;" id="signup">Don't have account yet?</a>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
